@@ -1,35 +1,55 @@
 # -*- coding: UTF-8 -*-
-import requests
-import re
+import requests,base64,json
+from Crypto.Cipher import AES
+from urllib import parse
 from http.server import BaseHTTPRequestHandler
-import json
 
-def list_split(items, n):
-    return [items[i:i + n] for i in range(0, len(items), n)]
-def getdata(name):
-    gitpage = requests.get("https://github.com/" + name)
-    data = gitpage.text
-    datadatereg = re.compile(r'data-date="(.*?)" data-level')
-    datacountreg = re.compile(r'data-count="(.*?)" data-date')
-    datadate = datadatereg.findall(data)
-    datacount = datacountreg.findall(data)
-    datacount = list(map(int, datacount))
-    contributions = sum(datacount)
-    datalist = []
-    for index, item in enumerate(datadate):
-        itemlist = {"date": item, "count": datacount[index]}
-        datalist.append(itemlist)
-    datalistsplit = list_split(datalist, 7)
-    returndata = {
-        "total": contributions,
-        "contributions": datalistsplit
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36',
+    "Referer" : "http://music.163.com/",
+    "Accept-Encoding" : "gzip, deflate",
+}
+
+def encrypt(key, text):
+    cryptor = AES.new(key.encode('utf8'), AES.MODE_CBC, b'0102030405060708')
+    length = 16
+    count = len(text.encode('utf-8'))
+    if (count % length != 0):
+        add = length - (count % length)
+    else:
+        add = 16
+    pad = chr(add)
+    text1 = text + (pad * add)
+    ciphertext = cryptor.encrypt(text1.encode('utf8'))
+    cryptedStr = str(base64.b64encode(ciphertext),encoding='utf-8')
+    return cryptedStr
+
+def protect(text):
+    return {"params":encrypt('TA3YiYCfY2dDJQgg',encrypt('0CoJUm6Qyw8W8jud',text)),"encSecKey":"84ca47bca10bad09a6b04c5c927ef077d9b9f1e37098aa3eac6ea70eb59df0aa28b691b7e75e4f1f9831754919ea784c8f74fbfadf2898b0be17849fd656060162857830e241aba44991601f137624094c114ea8d17bce815b0cd4e5b8e2fbaba978c6d1d14dc3d1faf852bdd28818031ccdaaa13a6018e1024e2aae98844210"}
+
+def getSongData(uid, song_type = 1):
+    url = "https://music.163.com/weapi/v1/play/record?csrf_token="
+    data = {
+        'uid': uid, #用户uid 可以到网页版搜索下用户进入到主页获取
+        'type': song_type, #1最近一周 0所有时间
     }
-    return returndata
+    session = requests.session()
+    res=session.post(url,protect(json.dumps(data)),headers=headers)
+    result=json.loads(res.text,strict=False)
+    if song_type == 0:
+        song_datas = result['allData']
+    elif song_type == 1:
+        song_datas = result['weekData']
+    return song_datas
+
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        path = self.path
-        user = path.split('?')[1]
-        data = getdata(user)
+        song_type = 1
+        dic = dict(parse.parse_qsl(parse.urlsplit(self.path).query))
+        if dic.has_key('song_type'):
+            song_type = dic['song_type']
+        data = getSongData(uid=dic['id'], song_type=int(song_type))
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Content-type', 'application/json')
