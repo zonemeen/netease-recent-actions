@@ -1,7 +1,6 @@
 # -*- coding: UTF-8 -*-
 import requests,base64,json
 from Crypto.Cipher import AES
-from urllib import parse
 from http.server import BaseHTTPRequestHandler
 
 
@@ -45,9 +44,10 @@ def getSongData(uid, song_type = 1):
 
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
-        song_type = 1
-        dic = dict(parse.parse_qsl(parse.urlsplit(self.path).query))
-        data = getSongData(uid=dic['id'], song_type=int(song_type))
+        path = self.path
+        print(path)
+        id = path.split('?')[1]
+        data = getSongData(uid=id, 1)
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
         self.send_header('Content-type', 'application/json')
