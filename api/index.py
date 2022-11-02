@@ -47,8 +47,6 @@ class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         song_type = 1
         dic = dict(parse.parse_qsl(parse.urlsplit(self.path).query))
-        if dic.has_key('song_type'):
-            song_type = dic['song_type']
         data = getSongData(uid=dic['id'], song_type=int(song_type))
         self.send_response(200)
         self.send_header('Access-Control-Allow-Origin', '*')
