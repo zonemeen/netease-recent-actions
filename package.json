@@ -1,10 +1,27 @@
 {
+  "name": "netease-recent-actions",
+  "version": "1.0.0",
+  "description": "generate an svg profile from your NetEase Cloud Music account via github actions",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zonemeen/netease-recent-actions.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "netease",
+    "netease cloud music",
+    "music",
+    "svg"
+  ],
+  "author": "zonemeen <miqilin18@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
-    "prettier": "^2.7.1",
-    "vercel": "^28.4.14"
+    "prettier": "^2.7.1"
   },
   "dependencies": {
+    "@actions/core": "^1.10.0",
     "ejs": "^3.1.8",
     "node-fetch": "^3.2.10",
     "python-shell": "^3.0.1"

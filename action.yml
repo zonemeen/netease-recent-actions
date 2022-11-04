@@ -1,0 +1,17 @@
+name: 'netease-recent-actions'
+description: 'This action allows you to generate an svg profile from your NetEase Cloud Music account'
+author: 'zonemeen <miqilin18@gmail.com>'
+runs:
+  using: 'node16'
+  main: 'index.js'
+branding:
+  icon: 'edit-3'
+  color: 'blue'
+inputs:
+  id:
+    description: 'This is your NetEase Cloud Music account id.'
+    required: true
+
+outputs:
+  deployment-status:
+    description: 'The status of the deployment that indicates if the run failed or passed. Possible outputs include: success|failed|skipped'

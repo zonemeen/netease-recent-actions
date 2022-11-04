@@ -1,5 +1,6 @@
 import { PythonShell } from 'python-shell'
 import { readFileSync, createWriteStream } from 'fs'
+import { getInput } from '@actions/core'
 import ejs from 'ejs'
 import fetch from 'node-fetch'
 import logo from './logo.js'
@@ -11,7 +12,9 @@ const imageToBase64 = (url) =>
 
 const readTemplateFile = () => readFileSync('./template/svg.ejs', 'utf-8')
 
-PythonShell.run('163music.py', { args: ['126764012'] }, async (err, res) => {
+const id = getInput('id') || '126764012'
+
+PythonShell.run('163music.py', { args: [id] }, async (err, res) => {
   if (err) throw err
   const songs = JSON.parse(res).slice(0, 4)
   const getAllImages = (recentlyPlayedSongs) =>
