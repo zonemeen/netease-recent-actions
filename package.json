@@ -1,0 +1,16 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "vercel": "^28.4.14"
+  },
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "node-fetch": "^3.2.10",
+    "python-shell": "^3.0.1"
+  }
+}
