@@ -2,6 +2,7 @@
   "name": "netease-recent-actions",
   "version": "1.0.0",
   "description": "generate an svg profile from your NetEase Cloud Music account via github actions",
+  "main": "index.js",
   "type": "module",
   "repository": {
     "type": "git",
