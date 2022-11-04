@@ -1,9 +1,5 @@
 {
   "type": "module",
-  "scripts": {
-    "start": "vercel dev",
-    "deploy": "vercel deploy --prod"
-  },
   "devDependencies": {
     "prettier": "^2.7.1",
     "vercel": "^28.4.14"

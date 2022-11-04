@@ -1,0 +1,39 @@
+name: Netease Recent Actions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 1'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - run: npm i -g pnpm
+      - run: pnpm install
+      - run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - run: |
+          git config --global user.name "zonemeen[bot]"
+          git config --global user.email "miqilin18@gmail.com"
+      - run: |
+          git pull
+      - run: |
+          node index.js
+      - run: |
+          git add README.md
+          git commit -m "Update README.md"
+          git push
