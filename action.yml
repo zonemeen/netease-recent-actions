@@ -3,7 +3,7 @@ description: 'This action allows you to generate an svg profile from your NetEas
 author: 'zonemeen <miqilin18@gmail.com>'
 
 branding:
-  icon: 'edit-3'
+  icon: 'music'
   color: 'blue'
 inputs:
   id:
@@ -17,14 +17,20 @@ runs:
     - uses: actions/setup-python@v4
       with:
         python-version: 3.9
+      run: pip install -r requirements.txt
     - uses: actions/setup-node@v3
       with:
         node-version: 16.x
-      run: |
-        npm install
-        python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        node index.js
+    - run: python -m pip install --upgrade pip
+      shell: bash
+    - run: pip install -r requirements.txt
+      shell: bash
+    - run: npm i -g pnpm
+      shell: bash
+    - run: pnpm install
+      shell: bash
+    - run: node index.js
+      shell: bash
 
 outputs:
   deployment-status:
