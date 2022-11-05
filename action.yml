@@ -20,18 +20,14 @@ runs:
     - uses: actions/setup-node@v3
       with:
         node-version: 16.x
-    - run: cd ${{ github.action_path }}
-      shell: bash
-    - run: pip install -r requirements.txt
-      shell: bash
-    - run: npm i -g pnpm
-      shell: bash
-    - run: cd ${{ github.action_path }}
-      shell: bash
-    - run: pnpm install
-      shell: bash
-    - run: node ${{ github.action_path }}/index.js
-      shell: bash
+    - shell: bash
+      run: |
+        cd ${{ github.action_path }}
+        pip install -r requirements.txt
+        npm i -g pnpm
+        pnpm install
+        ls
+        node index.js
 
 outputs:
   deployment-status:
