@@ -28,7 +28,7 @@ runs:
       shell: bash
     - run: pnpm install
       shell: bash
-    - run: node index.js
+    - run: node ${{ github.action_path }}/index.js
       shell: bash
 
 outputs:
