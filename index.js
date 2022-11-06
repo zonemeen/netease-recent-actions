@@ -12,7 +12,7 @@ const imageToBase64 = (url) =>
 
 const readTemplateFile = () => readFileSync('./template/svg.ejs', 'utf-8')
 
-const id = getInput('id') || '126764012'
+const id = getInput('id')
 
 PythonShell.run('163music.py', { args: [id] }, async (err, res) => {
   if (err) throw err

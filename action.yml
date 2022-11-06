@@ -26,8 +26,8 @@ runs:
         pip install -r requirements.txt
         npm i -g pnpm
         pnpm install
-        ls
         node index.js
+        cp 163.svg ${{ github.workspace }}
 
 outputs:
   deployment-status:
