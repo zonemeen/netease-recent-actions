@@ -16,7 +16,7 @@ const id = getInput('id') || '126764012'
 
 PythonShell.run('163music.py', { args: [id] }, async (err, res) => {
   if (err) throw err
-  const songs = JSON.parse(res).slice(0, 4)
+  const songs = JSON.parse(res).slice(0, 5)
   const getAllImages = (recentlyPlayedSongs) =>
     Promise.all(recentlyPlayedSongs.map(({ song }) => imageToBase64(song.al.picUrl)))
 

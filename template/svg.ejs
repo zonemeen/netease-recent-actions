@@ -33,7 +33,7 @@ fontSizeLimit = function(text, fontSize, maxWidth){
         xmlns:xlink="http://www.w3.org/1999/xlink"
         style="transform: scale(1.4) translate(15%, 15%);"
 >
-    <rect width="200" height="<%= 199 %>" rx="4" fill="#212121" />
+    <rect width="200" height="<%= 241 %>" rx="4" fill="#212121" />
     <rect x="178" y="8" width="15" height="13" fill="url(#pattern-logo)" />
 
     <text
@@ -168,15 +168,38 @@ fontSizeLimit = function(text, fontSize, maxWidth){
     >
     <tspan x="43" y="<%= 168.844 %>"><%= fontSizeLimit(recentPlayed[3].name,8,220) %></tspan>
 </text>
+    <rect
+            x="6"
+            y="<%= 195 %>"
+            width="188"
+            height="37"
+            rx="2"
+            fill="white"
+            fill-opacity="0.11"
+    />
+    <rect x="10" y="<%= 199 %>" width="29" height="29" rx="2" fill="url(#pattern5)" />
+    <text
+            fill="white"
+            fill-opacity="0.66"
+            xml:space="preserve"
+            style="white-space: pre"
+
+            font-size="7"
+            letter-spacing="0em"
+    >
+    <tspan x="43" y="<%= 222.258 %>"><%= fontSizeLimit(recentPlayed[4].artist, 7, 220)  %></tspan>
+  </text>
+    <text
+            fill="white"
+            xml:space="preserve"
+            style="white-space: pre"
+
+            font-size="8"
+            letter-spacing="0em"
+    >
+    <tspan x="43" y="<%= 210.844 %>"><%= fontSizeLimit(recentPlayed[4].name,8,220) %></tspan>
+</text>
     <defs>
-        <pattern
-                id="pattern0"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-        >
-            <use xlink:href="#image0" transform="scale(0.00166667)" />
-        </pattern>
         <pattern
                 id="pattern1"
                 patternContentUnits="objectBoundingBox"
@@ -210,6 +233,14 @@ fontSizeLimit = function(text, fontSize, maxWidth){
             <use xlink:href="#image4" transform="scale(0.00333333)" />
         </pattern>
         <pattern
+                id="pattern5"
+                patternContentUnits="objectBoundingBox"
+                width="1"
+                height="1"
+        >
+            <use xlink:href="#image5" transform="scale(0.00333333)" />
+        </pattern>
+        <pattern
                 id="pattern-logo"
                 patternContentUnits="objectBoundingBox"
                 width="1"
@@ -227,36 +258,6 @@ fontSizeLimit = function(text, fontSize, maxWidth){
                 height="1"
         >
             <use xlink:href="#image5" transform="scale(0.0015625)" />
-        </pattern>
-        <pattern
-                id="pattern6"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-        >
-            <use
-                    xlink:href="#image6"
-                    transform="translate(0 -0.0414552) scale(0.00169205)"
-            />
-        </pattern>
-        <pattern
-                id="pattern7"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-        >
-            <use
-                    xlink:href="#image7"
-                    transform="translate(-0.000782473) scale(0.00156495)"
-            />
-        </pattern>
-        <pattern
-                id="pattern8"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-        >
-            <use xlink:href="#image8" transform="scale(0.003125)" />
         </pattern>
         <image
                 id="image1"
@@ -281,6 +282,12 @@ fontSizeLimit = function(text, fontSize, maxWidth){
                 width="300"
                 height="300"
                 xlink:href="<%= recentPlayed[3].cover %>"
+        />
+        <image
+                id="image5"
+                width="300"
+                height="300"
+                xlink:href="<%= recentPlayed[4].cover %>"
         />
         <image
                 id="image-logo"
