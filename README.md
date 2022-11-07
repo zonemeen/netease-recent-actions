@@ -36,9 +36,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.18
+      - uses: zonemeen/netease-recent-actions@v1.0.18 # 使用最新版本，最新版本查看https://github.com/marketplace/actions/netease-recent-actions
         with:
-          id: '126764012' # Your NetEase Cloud Music account id
+          id: '126764012' # 你的网易云音乐账号id
 ```
 
 配置说明：听歌排行类型默认为`1`，即为近一周的听歌排行；歌曲数量默认为`5`条
@@ -66,7 +66,7 @@ jobs:
     steps:
       - uses: zonemeen/netease-recent-actions@v1.0.18
         with:
-          id: '126764012' # Your NetEase Cloud Music account id
+          id: '126764012'
           type: '0'
 ```
 
@@ -95,7 +95,7 @@ jobs:
     steps:
       - uses: zonemeen/netease-recent-actions@v1.0.18
         with:
-          id: '126764012' # Your NetEase Cloud Music account id
+          id: '126764012'
           number: 3
 ```
 
