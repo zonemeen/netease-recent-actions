@@ -9,9 +9,15 @@ inputs:
   id:
     description: 'This is your NetEase Cloud Music account id.'
     required: true
+  type:
+    description: 'Song ranking type, 1 for weekData, 0 for allData'
+    required: false
+  number:
+    description: 'The number of songs'
+    required: false
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-python@v4
@@ -26,7 +32,7 @@ runs:
         pip install -r requirements.txt
         npm i -g pnpm
         pnpm install
-        node index.js
+        node index.js --id ${{ inputs.id }} --type ${{ inputs.type }} --number ${{ inputs.number }}
         cp 163.svg ${{ github.workspace }}
 
 outputs:

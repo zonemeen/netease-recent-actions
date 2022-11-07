@@ -1,6 +1,6 @@
 import { PythonShell } from 'python-shell'
+import { cac } from 'cac'
 import { readFileSync, createWriteStream } from 'fs'
-import { getInput } from '@actions/core'
 import ejs from 'ejs'
 import fetch from 'node-fetch'
 import logo from './logo.js'
@@ -12,11 +12,20 @@ const imageToBase64 = (url) =>
 
 const readTemplateFile = () => readFileSync('./template/svg.ejs', 'utf-8')
 
-const id = getInput('id') || '126764012'
+const cli = cac('netease')
 
-PythonShell.run('163music.py', { args: [id] }, async (err, res) => {
+cli
+  .option('--id <id>', 'Your NetEase Cloud Music account id')
+  .option('--type <type>', 'Song ranking type, 1 for weekData, 0 for allData', { default: '1' })
+  .option('--number <number>', 'The number of songs', { default: '5' })
+
+const {
+  options: { id, type, number },
+} = cli.parse()
+
+PythonShell.run('163music.py', { args: [id, type] }, async (err, res) => {
   if (err) throw err
-  const songs = JSON.parse(res).slice(0, 5)
+  const songs = JSON.parse(res).slice(0, Number(number))
   const getAllImages = (recentlyPlayedSongs) =>
     Promise.all(recentlyPlayedSongs.map(({ song }) => imageToBase64(song.al.picUrl)))
 
