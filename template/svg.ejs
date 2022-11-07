@@ -25,57 +25,56 @@ fontSizeLimit = function(text, fontSize, maxWidth){
 %>
 
 <svg
-        width="200"
-        height="<%= 74+(recentPlayed.length-1)*42 %>"
-        viewBox="0 0 200 <%= 74+(recentPlayed.length-1)*42 %>"
+        width="280"
+        height="<%= (74+(recentPlayed.length-1)*42)*1.4 %>"
+        viewBox="0 0 280 <%= (74+(recentPlayed.length-1)*42)*1.4 %>"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
-        style="transform: scale(1.4) translate(15%, 15%);"
 >
-    <rect width="200" height="<%= 73+(recentPlayed.length-1)*42 %>" rx="4" fill="#212121" />
-    <rect x="178" y="8" width="15" height="13" fill="url(#pattern-logo)" />
+    <rect width="280" height="<%= (73+(recentPlayed.length-1)*42)*1.4 %>" rx="5.6" fill="#212121" />
+    <rect x="250" y="10" width="21" height="18.2" fill="url(#pattern-logo)" />
 
     <text
             fill="white"
             xml:space="preserve"
             style="white-space: pre"
-            font-size="10"
+            font-size="14"
             letter-spacing="0em"
     >
-  <tspan x="6" y="<%= 18.93 %>">Recently Played</tspan>
+  <tspan x="9" y="<%= 23.5 %>">Recently Played</tspan>
 </text>
     <%
             for (const [index, value] of recentPlayed.entries()) {
     %>
         <rect
-                x="6"
-                y="<%= 27+index*42 %>"
-                width="188"
-                height="37"
-                rx="2"
+                x="8.4"
+                y="<%= (27+index*42)*1.4 %>"
+                width="263.2"
+                height="51.8"
+                rx="2.8"
                 fill="white"
                 fill-opacity="0.11"
         />
-        <rect x="10" y="<%= 31+index*42 %>" width="29" height="29" rx="2" fill="<%= `url(#pattern${index})` %>" />
+        <rect x="14" y="<%= (31+index*42)*1.4 %>" width="40.6" height="40.6" rx="2.8" fill="<%= `url(#pattern${index})` %>" />
         <text
                 fill="white"
                 xml:space="preserve"
                 style="white-space: pre"
-                font-size="8"
+                font-size="11.2"
                 letter-spacing="0em"
         >
-  <tspan x="43" y="<%= 42.844+index*42 %>"><%= fontSizeLimit(recentPlayed[index].name,8,220) %></tspan>
+  <tspan x="60.2" y="<%= (42.844+index*42)*1.4 %>"><%= fontSizeLimit(recentPlayed[index].name,8,220) %></tspan>
   </text>
         <text
                 fill="white"
                 fill-opacity="0.66"
                 xml:space="preserve"
                 style="white-space: pre"
-                font-size="7"
+                font-size="9.8"
                 letter-spacing="0em"
         >
-    <tspan x="43" y="<%= 54.258+index*42 %>"><%= fontSizeLimit(recentPlayed[index].artist, 7, 220)  %></tspan>
+    <tspan x="60.2" y="<%= (54.258+index*42)*1.4 %>"><%= fontSizeLimit(recentPlayed[index].artist, 7, 220)  %></tspan>
 </text>
     <%
     }
