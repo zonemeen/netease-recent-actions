@@ -7,7 +7,7 @@ fontSizeLimit = function(text, fontSize, maxWidth){
         if(char === ' ' || /^\d+$/.test(char))
             totalWidth += fontSize * 0.7;
         // if its thin character
-        else if(char.toLowerCase() == 'i' || char == 'f' || char == 'l' || char == 'j' || char == 'r' || char == 't' || char == '"' || char == "'" || char == '(' || char == ')' || char == ',' || char == '-' || char == '.')
+        else if(char.toLowerCase() === 'i' || char === 'f' || char === 'l' || char === 'j' || char === 'r' || char === 't' || char === '"' || char === "'" || char === '(' || char === ')' || char === ',' || char === '-' || char === '.')
             totalWidth += fontSize * 0.3;
         // if it's uppercase
         else if(char === char.toUpperCase())
@@ -33,7 +33,7 @@ fontSizeLimit = function(text, fontSize, maxWidth){
         xmlns:xlink="http://www.w3.org/1999/xlink"
         style="transform: scale(1.4) translate(15%, 15%);"
 >
-    <rect width="200" height="<%= 241 %>" rx="4" fill="#212121" />
+    <rect width="200" height="<%= 73+(recentPlayed.length-1)*42 %>" rx="4" fill="#212121" />
     <rect x="178" y="8" width="15" height="13" fill="url(#pattern-logo)" />
 
     <text
@@ -45,201 +45,42 @@ fontSizeLimit = function(text, fontSize, maxWidth){
     >
   <tspan x="6" y="<%= 18.93 %>">Recently Played</tspan>
 </text>
-    <rect
-            x="6"
-            y="<%= 27 %>"
-            width="188"
-            height="37"
-            rx="2"
-            fill="white"
-            fill-opacity="0.11"
-    />
-    <text
-            fill="white"
-            xml:space="preserve"
-            style="white-space: pre"
-            font-size="8"
-            letter-spacing="0em"
-    >
-  <tspan x="43" y="<%= 42.844 %>"><%= fontSizeLimit(recentPlayed[0].name,8,220) %></tspan>
+    <%
+            for (const [index, value] of recentPlayed.entries()) {
+    %>
+        <rect
+                x="6"
+                y="<%= 27+index*42 %>"
+                width="188"
+                height="37"
+                rx="2"
+                fill="white"
+                fill-opacity="0.11"
+        />
+        <rect x="10" y="<%= 31+index*42 %>" width="29" height="29" rx="2" fill="<%= `url(#pattern${index})` %>" />
+        <text
+                fill="white"
+                xml:space="preserve"
+                style="white-space: pre"
+                font-size="8"
+                letter-spacing="0em"
+        >
+  <tspan x="43" y="<%= 42.844+index*42 %>"><%= fontSizeLimit(recentPlayed[index].name,8,220) %></tspan>
   </text>
-    <text
-            fill="white"
-            fill-opacity="0.66"
-            xml:space="preserve"
-            style="white-space: pre"
-            font-size="7"
-            letter-spacing="0em"
-    >
-    <tspan x="43" y="<%= 54.258 %>"><%= fontSizeLimit(recentPlayed[0].artist, 7, 220)  %></tspan>
+        <text
+                fill="white"
+                fill-opacity="0.66"
+                xml:space="preserve"
+                style="white-space: pre"
+                font-size="7"
+                letter-spacing="0em"
+        >
+    <tspan x="43" y="<%= 54.258+index*42 %>"><%= fontSizeLimit(recentPlayed[index].artist, 7, 220)  %></tspan>
 </text>
-
-    <rect x="10" y="<%= 31 %>" width="29" height="29" rx="2" fill="url(#pattern1)" />
-    <rect
-            x="6"
-            y="<%= 69 %>"
-            width="188"
-            height="37"
-            rx="2"
-            fill="white"
-            fill-opacity="0.11"
-    />
-    <rect x="10" y="<%= 73 %>" width="29" height="29" rx="2" fill="url(#pattern2)" />
-    <text
-            fill="white"
-            fill-opacity="0.66"
-            xml:space="preserve"
-            style="white-space: pre"
-
-            font-size="7"
-            letter-spacing="0em"
-    >
-    <tspan x="43" y="<%= 96.258 %>"><%= fontSizeLimit(recentPlayed[1].artist, 7, 220)  %></tspan>
-  </text>
-    <text
-            fill="white"
-            xml:space="preserve"
-            style="white-space: pre"
-
-            font-size="8"
-            letter-spacing="0em"
-    >
-    <tspan x="43" y="<%= 84.844 %>"><%= fontSizeLimit(recentPlayed[1].name,8,220) %></tspan>
-  </text>
-    <rect
-            x="6"
-            y="<%= 111 %>"
-            width="188"
-            height="37"
-            rx="2"
-            fill="white"
-            fill-opacity="0.11"
-    />
-    <rect x="10" y="<%= 115 %>" width="29" height="29" rx="2" fill="url(#pattern3)" />
-    <text
-            fill="white"
-            fill-opacity="0.66"
-            xml:space="preserve"
-            style="white-space: pre"
-
-            font-size="7"
-            letter-spacing="0em"
-    >
-    <tspan x="43" y="<%= 138.258 %>"><%= fontSizeLimit(recentPlayed[2].artist, 7, 220)  %></tspan>
-  </text>
-    <text
-            fill="white"
-            xml:space="preserve"
-            style="white-space: pre"
-
-            font-size="8"
-            letter-spacing="0em"
-    >
-    <tspan x="43" y="<%= 126.844 %>"><%= fontSizeLimit(recentPlayed[2].name,8,220) %></tspan>
-</text>
-    <rect
-            x="6"
-            y="<%= 153 %>"
-            width="188"
-            height="37"
-            rx="2"
-            fill="white"
-            fill-opacity="0.11"
-    />
-    <rect x="10" y="<%= 157 %>" width="29" height="29" rx="2" fill="url(#pattern4)" />
-    <text
-            fill="white"
-            fill-opacity="0.66"
-            xml:space="preserve"
-            style="white-space: pre"
-
-            font-size="7"
-            letter-spacing="0em"
-    >
-    <tspan x="43" y="<%= 180.258 %>"><%= fontSizeLimit(recentPlayed[3].artist, 7, 220)  %></tspan>
-  </text>
-    <text
-            fill="white"
-            xml:space="preserve"
-            style="white-space: pre"
-
-            font-size="8"
-            letter-spacing="0em"
-    >
-    <tspan x="43" y="<%= 168.844 %>"><%= fontSizeLimit(recentPlayed[3].name,8,220) %></tspan>
-</text>
-    <rect
-            x="6"
-            y="<%= 195 %>"
-            width="188"
-            height="37"
-            rx="2"
-            fill="white"
-            fill-opacity="0.11"
-    />
-    <rect x="10" y="<%= 199 %>" width="29" height="29" rx="2" fill="url(#pattern5)" />
-    <text
-            fill="white"
-            fill-opacity="0.66"
-            xml:space="preserve"
-            style="white-space: pre"
-
-            font-size="7"
-            letter-spacing="0em"
-    >
-    <tspan x="43" y="<%= 222.258 %>"><%= fontSizeLimit(recentPlayed[4].artist, 7, 220)  %></tspan>
-  </text>
-    <text
-            fill="white"
-            xml:space="preserve"
-            style="white-space: pre"
-
-            font-size="8"
-            letter-spacing="0em"
-    >
-    <tspan x="43" y="<%= 210.844 %>"><%= fontSizeLimit(recentPlayed[4].name,8,220) %></tspan>
-</text>
+    <%
+    }
+    %>
     <defs>
-        <pattern
-                id="pattern1"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-        >
-            <use xlink:href="#image1" transform="scale(0.00333333)" />
-        </pattern>
-        <pattern
-                id="pattern2"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-        >
-            <use xlink:href="#image2" transform="scale(0.00333333)" />
-        </pattern>
-        <pattern
-                id="pattern3"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-        >
-            <use xlink:href="#image3" transform="scale(0.00333333)" />
-        </pattern>
-        <pattern
-                id="pattern4"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-        >
-            <use xlink:href="#image4" transform="scale(0.00333333)" />
-        </pattern>
-        <pattern
-                id="pattern5"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-        >
-            <use xlink:href="#image5" transform="scale(0.00333333)" />
-        </pattern>
         <pattern
                 id="pattern-logo"
                 patternContentUnits="objectBoundingBox"
@@ -251,44 +92,32 @@ fontSizeLimit = function(text, fontSize, maxWidth){
                     transform="translate(0 -0.00103455) scale(0.00129639 0.00141336)"
             />
         </pattern>
-        <pattern
-                id="pattern5"
-                patternContentUnits="objectBoundingBox"
-                width="1"
-                height="1"
-        >
-            <use xlink:href="#image5" transform="scale(0.0015625)" />
-        </pattern>
-        <image
-                id="image1"
-                width="300"
-                height="300"
-                xlink:href="<%= recentPlayed[0].cover %>"
-        />
-        <image
-                id="image2"
-                width="300"
-                height="300"
-                xlink:href="<%= recentPlayed[1].cover %>"
-        />
-        <image
-                id="image3"
-                width="300"
-                height="300"
-                xlink:href="<%= recentPlayed[2].cover %>"
-        />
-        <image
-                id="image4"
-                width="300"
-                height="300"
-                xlink:href="<%= recentPlayed[3].cover %>"
-        />
-        <image
-                id="image5"
-                width="300"
-                height="300"
-                xlink:href="<%= recentPlayed[4].cover %>"
-        />
+        <%
+        for (const [index] of recentPlayed.entries()) {
+        %>
+            <pattern
+                    id="<%= `pattern${index}` %>"
+                    patternContentUnits="objectBoundingBox"
+                    width="1"
+                    height="1"
+            >
+                <use xlink:href="<%= `#image${index}` %>" transform="scale(0.00333333)" />
+            </pattern>
+        <%
+        }
+        %>
+        <%
+        for (const [index, value] of recentPlayed.entries()) {
+        %>
+            <image
+                    id="<%= `image${index}` %>"
+                    width="300"
+                    height="300"
+                    xlink:href="<%= value.cover %>"
+            />
+        <%
+        }
+        %>
         <image
                 id="image-logo"
                 width="2362"
