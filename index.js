@@ -37,6 +37,7 @@ PythonShell.run('163music.py', { args: [id, type] }, async (err, res) => {
         name: song.name,
         artist: song.ar.map(({ name }) => name).join('/'),
         cover: covers[i],
+        url: `https://music.163.com/#/song?id=${song.id}`,
         logo,
       }
     }),
