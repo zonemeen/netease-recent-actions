@@ -11,10 +11,10 @@ inputs:
     required: true
   type:
     description: 'Song ranking type, 1 for weekData, 0 for allData'
-    required: false
+    default: '1'
   number:
     description: 'The number of songs'
-    required: false
+    default: '5'
 
 runs:
   using: 'composite'
@@ -34,6 +34,13 @@ runs:
         pnpm install
         node index.js --id ${{ inputs.id }} --type ${{ inputs.type }} --number ${{ inputs.number }}
         cp 163.svg ${{ github.workspace }}
+        cd ${{ github.workspace }}
+        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+        git config --global user.name "${{ github.actor }}"
+        git pull
+        git add .
+        git commit -m "Update 163.svg"
+        git push
 
 outputs:
   deployment-status:
