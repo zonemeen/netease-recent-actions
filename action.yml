@@ -34,6 +34,12 @@ runs:
         pnpm install
         node index.js --id ${{ inputs.id }} --type ${{ inputs.type }} --number ${{ inputs.number }}
         cp 163.svg ${{ github.workspace }}
+        cd ${{ github.workspace }}
+        git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+        git config --global user.name "${{ github.actor }}"
+        git add .
+        git commit -m "Update 163.svg"
+        git push
 
 outputs:
   deployment-status:
