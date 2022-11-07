@@ -11,10 +11,10 @@ inputs:
     required: true
   type:
     description: 'Song ranking type, 1 for weekData, 0 for allData'
-    required: false
+    default: '1'
   number:
     description: 'The number of songs'
-    required: false
+    default: '5'
 
 runs:
   using: 'composite'
