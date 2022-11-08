@@ -8,7 +8,7 @@ import logo from './logo.js'
 const imageToBase64 = (url) =>
   fetch(url + '?param=60x60')
     .then((r) => r.buffer())
-    .then((buf) => `data:image/png;base64,` + buf.toString('base64'))
+    .then((buf) => `data:image/jpg;base64,` + buf.toString('base64'))
 
 const readTemplateFile = () => readFileSync('./template/svg.ejs', 'utf-8')
 
