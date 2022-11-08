@@ -18,9 +18,10 @@ cli
   .option('--id <id>', 'Your NetEase Cloud Music account id')
   .option('--type <type>', 'Song ranking type, 1 for weekData, 0 for allData', { default: '1' })
   .option('--number <number>', 'The number of songs', { default: '5' })
+  .option('--title <title>', 'Title of svg profile', { default: 'Recently Played' })
 
 const {
-  options: { id, type, number },
+  options: { id, type, number, title },
 } = cli.parse()
 
 PythonShell.run('163music.py', { args: [id, type] }, async (err, res) => {
@@ -39,6 +40,7 @@ PythonShell.run('163music.py', { args: [id, type] }, async (err, res) => {
         cover: covers[i],
         url: `https://music.163.com/#/song?id=${song.id}`,
         logo,
+        title,
       }
     }),
   }

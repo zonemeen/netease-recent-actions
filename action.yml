@@ -5,6 +5,7 @@ author: 'zonemeen <miqilin18@gmail.com>'
 branding:
   icon: 'music'
   color: 'blue'
+
 inputs:
   id:
     description: 'This is your NetEase Cloud Music account id.'
@@ -15,6 +16,9 @@ inputs:
   number:
     description: 'The number of songs'
     default: '5'
+  title:
+    description: 'Title of svg profile'
+    default: 'Recently Played'
 
 runs:
   using: 'composite'
