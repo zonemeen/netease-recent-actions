@@ -17,7 +17,7 @@
 
 ### 默认配置
 
-![image](https://user-images.githubusercontent.com/44596995/200254736-a5d4186a-8e9e-485e-a51b-3034e001602e.png)
+![163-default](https://user-images.githubusercontent.com/44596995/200461439-01e74061-74a8-47af-8b43-87f83e247010.svg)
 
 ```yml
 name: Netease Recent Actions
@@ -43,9 +43,9 @@ jobs:
 
 配置说明：听歌排行类型默认为`1`，即为近一周的听歌排行；歌曲数量默认为`5`条
 
-### 听歌排行类型配置
+### 听歌排行类型
 
-![image](https://user-images.githubusercontent.com/44596995/200254911-c22dd023-3957-4401-aba1-9b815fc7b951.png)
+![163-type](https://user-images.githubusercontent.com/44596995/200461612-166fc262-4bf3-46f6-b0dc-e8d0cb5394ff.svg)
 
 ```yml
 name: Netease Recent Actions
@@ -70,11 +70,12 @@ jobs:
           type: '0'
 ```
 
-配置说明：听歌排行类型为`0`，即为所有时间的听歌排行；歌曲数量默认为`5`条
+配置说明：听歌排行类型自定义为`0`，即为所有时间的听歌排行；歌曲数量默认为`5`条
 
-### 歌曲数量配置
+### 歌曲数量
 
-![image](https://user-images.githubusercontent.com/44596995/200255152-4c565397-38af-41b7-8657-0a2f5b022204.png)
+![163-number](https://user-images.githubusercontent.com/44596995/200461744-0d241454-7230-4fdd-846d-d97adfa573ff.svg)
+
 
 ```yml
 name: Netease Recent Actions
@@ -99,7 +100,36 @@ jobs:
           number: 3
 ```
 
-配置说明：听歌排行类型默认为`1`，即为近一周的听歌排行；歌曲数量为`3`条
+配置说明：听歌排行类型默认为`1`，即为近一周的听歌排行；歌曲数量自定义为`3`条
+
+### 标题
+
+![163](https://user-images.githubusercontent.com/44596995/200462389-820b61ac-7625-4c70-810a-563c7a7353b7.svg)
+
+```yml
+name: Netease Recent Actions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '00 22 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: zonemeen/netease-recent-actions@v1.0.18
+        with:
+          id: '126764012'
+          title: '最近在听'
+```
+
+配置说明：听歌排行类型默认为`1`，即为近一周的听歌排行；歌曲数量默认为`5`条；标题自定义为`最近在听`
 
 ## 📄 开源协议
 
