@@ -4,12 +4,6 @@ import crypto from 'crypto'
 import ejs from 'ejs'
 import axios from 'axios'
 
-const imageToBase64 = (url) =>
-  axios.get(url, { responseType: 'arraybuffer' }).then((response) => {
-    const buffer64 = Buffer.from(response.data, 'binary').toString('base64')
-    return `data:image/jpg;base64,` + buffer64
-  })
-
 const readTemplateFile = () => readFileSync('./template/svg.ejs', 'utf-8')
 
 const aesEncrypt = (secKey, text) => {
@@ -30,10 +24,19 @@ cli
   .option('--type <type>', 'Song ranking type, 1 for weekData, 0 for allData', { default: '1' })
   .option('--number <number>', 'The number of songs', { default: '5' })
   .option('--title <title>', 'Title of svg profile', { default: 'Recently Played' })
+  .option('--size <size>', 'Size of the song picture', { default: '800' })
 
 const {
-  options: { id, type, number, title },
+  options: { id, type, number, title, size },
 } = cli.parse()
+
+const imageToBase64 = (url) =>
+  axios
+    .get(`${url}${size !== '800' ? `?param=${size}x${size}` : ''}`, { responseType: 'arraybuffer' })
+    .then((response) => {
+      const buffer64 = Buffer.from(response.data, 'binary').toString('base64')
+      return `data:image/jpg;base64,` + buffer64
+    })
 
 const { data } = await axios.post(
   'https://music.163.com/weapi/v1/play/record?csrf_token=',

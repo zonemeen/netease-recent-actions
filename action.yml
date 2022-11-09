@@ -19,6 +19,9 @@ inputs:
   title:
     description: 'Title of svg profile'
     default: 'Recently Played'
+  size:
+    description: 'Size of the song picture'
+    default: '800'
 
 runs:
   using: 'composite'
@@ -32,7 +35,7 @@ runs:
         cd ${{ github.action_path }}
         npm i -g pnpm
         pnpm install
-        node index.js --id ${{ inputs.id }} --type ${{ inputs.type }} --number ${{ inputs.number }}
+        node index.js --id ${{ inputs.id }} --type ${{ inputs.type }} --number ${{ inputs.number }} --size ${{ inputs.size }}
         cp 163.svg ${{ github.workspace }}
         cd ${{ github.workspace }}
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
