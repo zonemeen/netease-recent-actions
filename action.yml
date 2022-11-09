@@ -24,16 +24,12 @@ runs:
   using: 'composite'
   steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
-      with:
-        python-version: 3.9
     - uses: actions/setup-node@v3
       with:
         node-version: 16.x
     - shell: bash
       run: |
         cd ${{ github.action_path }}
-        pip install -r requirements.txt
         npm i -g pnpm
         pnpm install
         node index.js --id ${{ inputs.id }} --type ${{ inputs.type }} --number ${{ inputs.number }}
