@@ -36,12 +36,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.18 # 使用最新版本，最新版本查看https://github.com/marketplace/actions/netease-recent-actions
+      - uses: zonemeen/netease-recent-actions@v1.0.23 # 使用最新版本，最新版本查看https://github.com/marketplace/actions/netease-recent-actions
         with:
           id: '126764012' # 你的网易云音乐账号id
 ```
-
-配置说明：听歌排行类型默认为`1`，即为近一周的听歌排行；歌曲数量默认为`5`条
 
 ### 听歌排行类型
 
@@ -64,13 +62,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.18
+      - uses: zonemeen/netease-recent-actions@v1.0.23
         with:
           id: '126764012'
           type: '0'
 ```
 
-配置说明：听歌排行类型自定义为`0`，即为所有时间的听歌排行；歌曲数量默认为`5`条
+配置说明：`0`：为所有时间的听歌排行；`1`：默认为1，即近一周的听歌排行
 
 ### 歌曲数量
 
@@ -94,17 +92,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.18
+      - uses: zonemeen/netease-recent-actions@v1.0.23
         with:
           id: '126764012'
           number: 3
 ```
 
-配置说明：听歌排行类型默认为`1`，即为近一周的听歌排行；歌曲数量自定义为`3`条
+配置说明：歌曲数量自定义为`3`条，默认为`5`条
 
 ### 标题
 
-![163](https://user-images.githubusercontent.com/44596995/200462389-820b61ac-7625-4c70-810a-563c7a7353b7.svg)
+![163-title](https://user-images.githubusercontent.com/44596995/200462389-820b61ac-7625-4c70-810a-563c7a7353b7.svg)
 
 ```yml
 name: Netease Recent Actions
@@ -123,13 +121,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.18
+      - uses: zonemeen/netease-recent-actions@v1.0.23
         with:
           id: '126764012'
           title: '最近在听'
 ```
 
-配置说明：听歌排行类型默认为`1`，即为近一周的听歌排行；歌曲数量默认为`5`条；标题自定义为`最近在听`
+配置说明：标题自定义为`最近在听`，默认为`Recently Played`
+
+### 图片尺寸
+
+![163-size](https://user-images.githubusercontent.com/44596995/200756757-62c04d9e-af87-47fa-96af-02ded58180c9.svg)
+
+```yml
+name: Netease Recent Actions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '00 22 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: zonemeen/netease-recent-actions@v1.0.23
+        with:
+          id: '126764012'
+          size: 60
+```
+
+配置说明：图片尺寸自定义为`60`，默认为`800`；尺寸越小，优点是svg尺寸较小，缺点是图片会失真变模糊
 
 ## 📄 开源协议
 
