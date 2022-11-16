@@ -156,7 +156,62 @@ jobs:
           size: 60
 ```
 
-配置说明：图片尺寸自定义为`60`，默认为`800`；尺寸越小，优点是svg尺寸较小，缺点是图片会失真变模糊
+
+### 卡片宽度
+
+![163-width](https://user-images.githubusercontent.com/44596995/202070468-eb7b582d-903e-47d3-b580-ef3b54f8d081.svg)
+
+```yml
+name: Netease Recent Actions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '00 22 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: zonemeen/netease-recent-actions@v1.0.23
+        with:
+          id: '126764012'
+          width: 380
+```
+
+### 是否显示听歌次数对比百分比
+
+![163-](https://user-images.githubusercontent.com/44596995/202071066-10defec9-2e99-471c-ace8-bc06d80003cb.svg)
+
+```yml
+name: Netease Recent Actions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '00 22 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: zonemeen/netease-recent-actions@v1.0.23
+        with:
+          id: '126764012'
+          show_percent: '1'
+```
+
+配置说明：自定义为`1`，即显示听歌次数对比百分比；默认为`0`，即不显示
 
 ## 📄 开源协议
 
