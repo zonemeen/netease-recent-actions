@@ -25,9 +25,10 @@ cli
   .option('--number <number>', 'The number of songs', { default: '5' })
   .option('--title <title>', 'Title of svg profile', { default: 'Recently Played' })
   .option('--size <size>', 'Size of the song picture', { default: '800' })
+  .option('--width <width>', 'Width of the card', { default: '280' })
 
 const {
-  options: { id, type, number, title, size },
+  options: { id, type, number, title, size, width },
 } = cli.parse()
 
 const imageToBase64 = (url) =>
@@ -69,7 +70,7 @@ const getAllImages = (recentlyPlayedSongs) =>
 const covers = await getAllImages(songs)
 
 const templateParams = {
-  recentPlayed: songs.map(({ song }, i) => {
+  recentPlayed: songs.map(({ song, score }, i) => {
     return {
       name: song.name,
       artist: song.ar.map(({ name }) => name).join('/'),
@@ -77,7 +78,7 @@ const templateParams = {
       url: `https://music.163.com/#/song?id=${song.id}`,
     }
   }),
-  theme: { title },
+  themeConfig: { title, width: Number(width) },
 }
 const svgFile = createWriteStream('163.svg')
 svgFile.write(ejs.render(readTemplateFile(), templateParams))
