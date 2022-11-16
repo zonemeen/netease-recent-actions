@@ -13,7 +13,7 @@
 
 ## 🔨 使用
 
-需使用Github Actions，参考这个[仓库](https://github.com/zonemeen/zonemeen)的这个[文件](https://github.com/zonemeen/zonemeen/blob/main/.github/workflows/job-work.yml)的配置，触发更新会自动提交`163.svg`这个文件至您的目标仓库
+需使用Github Actions，参考这个[仓库](https://github.com/zonemeen/zonemeen)的这个[文件](https://github.com/zonemeen/zonemeen/blob/a8c4549f38fd0ba254e3650eb0832a9e3cd1eb58/.github/workflows/job-work.yml)的配置，触发更新会自动提交`163.svg`这个文件至您的目标仓库
 
 ### 默认配置
 
