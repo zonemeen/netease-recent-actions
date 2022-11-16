@@ -26,9 +26,12 @@ cli
   .option('--title <title>', 'Title of svg profile', { default: 'Recently Played' })
   .option('--size <size>', 'Size of the song picture', { default: '800' })
   .option('--width <width>', 'Width of the card', { default: '280' })
+  .option('--show_percent <show_percent>', 'Whether to show the percentage of play count', {
+    default: '0',
+  })
 
 const {
-  options: { id, type, number, title, size, width },
+  options: { id, type, number, title, size, width, show_percent },
 } = cli.parse()
 
 const imageToBase64 = (url) =>
@@ -76,6 +79,7 @@ const templateParams = {
       artist: song.ar.map(({ name }) => name).join('/'),
       cover: covers[i],
       url: `https://music.163.com/#/song?id=${song.id}`,
+      percent: Number(show_percent) === 1 ? score / 100 : 0,
     }
   }),
   themeConfig: { title, width: Number(width) },
