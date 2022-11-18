@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.23 # 使用最新版本，最新版本查看https://github.com/marketplace/actions/netease-recent-actions
+      - uses: zonemeen/netease-recent-actions@latest # 使用最新版本，最新版本查看https://github.com/marketplace/actions/netease-recent-actions
         with:
           id: '126764012' # 你的网易云音乐账号id
 ```
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.23
+      - uses: zonemeen/netease-recent-actions@latest
         with:
           id: '126764012'
           type: '0'
@@ -92,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.23
+      - uses: zonemeen/netease-recent-actions@latest
         with:
           id: '126764012'
           number: 3
@@ -121,7 +121,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.23
+      - uses: zonemeen/netease-recent-actions@latest
         with:
           id: '126764012'
           title: '最近在听'
@@ -150,7 +150,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.23
+      - uses: zonemeen/netease-recent-actions@latest
         with:
           id: '126764012'
           size: 60
@@ -178,7 +178,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.23
+      - uses: zonemeen/netease-recent-actions@latest
         with:
           id: '126764012'
           width: 380
@@ -205,7 +205,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.23
+      - uses: zonemeen/netease-recent-actions@latest
         with:
           id: '126764012'
           show_percent: '1'
