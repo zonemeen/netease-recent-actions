@@ -25,6 +25,9 @@ inputs:
   width:
     description: 'Width of the card'
     default: '280'
+  column:
+    description: 'Number of columns of the card'
+    default: '1'
   show_percent:
     description: 'Whether to show the percentage of play count'
     default: '0'
@@ -41,7 +44,7 @@ runs:
         cd ${{ github.action_path }}
         npm i -g pnpm
         pnpm install
-        node index.js --id ${{ inputs.id }} --type ${{ inputs.type }} --number ${{ inputs.number }} --title ${{ inputs.title }} --size ${{ inputs.size }} --width ${{ inputs.width }} --show_percent ${{ inputs.show_percent }}
+        node index.js --id ${{ inputs.id }} --type ${{ inputs.type }} --number ${{ inputs.number }} --title ${{ inputs.title }} --size ${{ inputs.size }} --width ${{ inputs.width }} --column ${{ inputs.column }} --show_percent ${{ inputs.show_percent }}
         cp 163.svg ${{ github.workspace }}
         cd ${{ github.workspace }}
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"

@@ -26,12 +26,13 @@ cli
   .option('--title <title>', 'Title of svg profile', { default: 'Recently Played' })
   .option('--size <size>', 'Size of the song picture', { default: '800' })
   .option('--width <width>', 'Width of the card', { default: '280' })
+  .option('--column <column>', 'Number of columns of the card', { default: '1' })
   .option('--show_percent <show_percent>', 'Whether to show the percentage of play count', {
     default: '0',
   })
 
 const {
-  options: { id, type, number, title, size, width, show_percent },
+  options: { id, type, number, title, size, width, column, show_percent },
 } = cli.parse()
 
 const imageToBase64 = (url) =>
@@ -66,7 +67,7 @@ const { data } = await axios.post(
     },
   }
 )
-const songs = data[Number(type) === 1 ? 'weekData' : 'allData'].slice(0, Number(number))
+const songs = data[parseInt(type) === 1 ? 'weekData' : 'allData'].slice(0, parseInt(number))
 const getAllImages = (recentlyPlayedSongs) =>
   Promise.all(recentlyPlayedSongs.map(({ song }) => imageToBase64(song.al.picUrl)))
 
@@ -79,10 +80,10 @@ const templateParams = {
       artist: song.ar.map(({ name }) => name).join('/'),
       cover: covers[i],
       url: `https://music.163.com/#/song?id=${song.id}`,
-      percent: Number(show_percent) === 1 ? score / 100 : 0,
+      percent: parseInt(show_percent) === 1 ? score / 100 : 0,
     }
   }),
-  themeConfig: { title, width: Number(width) },
+  themeConfig: { title, width: parseInt(width), column: parseInt(column) },
 }
 const svgFile = createWriteStream('163.svg')
 svgFile.write(ejs.render(readTemplateFile(), templateParams))
