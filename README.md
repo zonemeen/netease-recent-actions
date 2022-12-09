@@ -189,7 +189,7 @@ jobs:
 
 ### 列数
 
-![163-column](https://user-images.githubusercontent.com/44596995/206646510-8456cde4-675d-4bd0-bf80-03e1d4285650.svg)
+![163-column](https://user-images.githubusercontent.com/44596995/206666995-5b8a1d72-a131-4830-a351-4e143bb3dab6.svg)
 
 ```yml
 name: Netease Recent Actions
