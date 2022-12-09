@@ -156,8 +156,9 @@ jobs:
           size: 60
 ```
 
+配置说明：图片尺寸自定义为`60`，默认为`800`；尺寸越小，优点是 svg 尺寸较小、请求返回的时间变短，缺点是图片会失真变模糊
 
-### 卡片宽度
+### 卡片单列宽度
 
 ![163-width](https://user-images.githubusercontent.com/44596995/202070468-eb7b582d-903e-47d3-b580-ef3b54f8d081.svg)
 
@@ -184,9 +185,40 @@ jobs:
           width: 380
 ```
 
+配置说明：卡片单列宽度自定义为`380`，默认为`280`
+
+### 列数
+
+![163-column](https://user-images.githubusercontent.com/44596995/206646510-8456cde4-675d-4bd0-bf80-03e1d4285650.svg)
+
+```yml
+name: Netease Recent Actions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '00 22 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: zonemeen/netease-recent-actions@latest
+        with:
+          id: '126764012'
+          column: 2
+```
+
+配置说明：列数自定义为`2`，默认为`1`
+
 ### 是否显示听歌次数对比百分比
 
-![163-](https://user-images.githubusercontent.com/44596995/202071066-10defec9-2e99-471c-ace8-bc06d80003cb.svg)
+![163-percent](https://user-images.githubusercontent.com/44596995/202071066-10defec9-2e99-471c-ace8-bc06d80003cb.svg)
 
 ```yml
 name: Netease Recent Actions
