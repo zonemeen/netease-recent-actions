@@ -28,7 +28,7 @@ on:
   pull_request:
     branches: [ main ]
   schedule:
-    - cron: '00 22 * * 0'
+    - cron: '00 22 * * 0' # 北京时间每周一上午6点自动更新
 
 jobs:
   build:
