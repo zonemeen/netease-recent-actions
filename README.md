@@ -70,6 +70,64 @@ jobs:
 
 配置说明：`0`：为所有时间的听歌排行；`1`：默认为1，即近一周的听歌排行
 
+### 是否显示听歌次数对比百分比
+
+![163-percent](https://user-images.githubusercontent.com/44596995/202071066-10defec9-2e99-471c-ace8-bc06d80003cb.svg)
+
+```yml
+name: Netease Recent Actions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '00 22 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: zonemeen/netease-recent-actions@latest
+        with:
+          id: '126764012'
+          show_percent: '1'
+```
+
+配置说明：自定义为`1`，即显示听歌次数对比百分比；默认为`0`，即不显示
+
+### 主题模式
+
+![163-theme](https://user-images.githubusercontent.com/44596995/223606087-6d93afd9-5d1d-429a-8c15-e30f79fcec42.svg)
+
+```yml
+name: Netease Recent Actions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '00 22 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: zonemeen/netease-recent-actions@latest
+        with:
+          id: '126764012'
+          theme: 'light'
+```
+
+配置说明：主题模式自定义为`light`：浅色模式，默认为`dark`：暗夜模式
+
 ### 歌曲数量
 
 ![163-number](https://user-images.githubusercontent.com/44596995/200461744-0d241454-7230-4fdd-846d-d97adfa573ff.svg)
@@ -215,35 +273,6 @@ jobs:
 ```
 
 配置说明：列数自定义为`2`，默认为`1`
-
-### 是否显示听歌次数对比百分比
-
-![163-percent](https://user-images.githubusercontent.com/44596995/202071066-10defec9-2e99-471c-ace8-bc06d80003cb.svg)
-
-```yml
-name: Netease Recent Actions
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-  schedule:
-    - cron: '00 22 * * 0'
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: zonemeen/netease-recent-actions@latest
-        with:
-          id: '126764012'
-          show_percent: '1'
-```
-
-配置说明：自定义为`1`，即显示听歌次数对比百分比；默认为`0`，即不显示
 
 ## 📄 开源协议
 
