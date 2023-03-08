@@ -25,6 +25,7 @@ cli
   .option('--number <number>', 'The number of songs', { default: '5' })
   .option('--title <title>', 'Title of svg profile', { default: 'Recently Played' })
   .option('--size <size>', 'Size of the song picture', { default: '800' })
+  .option('--theme <theme>', 'Theme of the card', { default: 'dark' })
   .option('--width <width>', 'Width of the card', { default: '280' })
   .option('--column <column>', 'Number of columns of the card', { default: '1' })
   .option('--show_percent <show_percent>', 'Whether to show the percentage of play count', {
@@ -32,7 +33,7 @@ cli
   })
 
 const {
-  options: { id, type, number, title, size, width, column, show_percent },
+  options: { id, type, number, title, size, width, column, theme, show_percent },
 } = cli.parse()
 
 const imageToBase64 = (url) =>
@@ -83,7 +84,15 @@ const templateParams = {
       percent: parseInt(show_percent) === 1 ? score / 100 : 0,
     }
   }),
-  themeConfig: { title, width: parseInt(width), column: parseInt(column) },
+  themeConfig: {
+    title,
+    width: parseInt(width),
+    column: parseInt(column),
+    color:
+      theme === 'light'
+        ? { bgColor: '#f6f8fa', fontColor: '#161b22', itemBgColor: '#000000' }
+        : { bgColor: '#212121', fontColor: '#f4f4f4', itemBgColor: '#ffffff' },
+  },
 }
 const svgFile = createWriteStream('163.svg')
 svgFile.write(ejs.render(readTemplateFile(), templateParams))
