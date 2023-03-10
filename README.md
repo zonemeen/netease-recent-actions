@@ -101,7 +101,7 @@ jobs:
 
 ### 主题模式
 
-![163-theme](https://user-images.githubusercontent.com/44596995/223606087-6d93afd9-5d1d-429a-8c15-e30f79fcec42.svg)
+![163-theme](https://user-images.githubusercontent.com/44596995/223888202-eae7826f-e81c-4af7-8283-d55f6ee68355.svg)
 
 ```yml
 name: Netease Recent Actions
