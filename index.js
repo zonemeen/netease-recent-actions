@@ -32,7 +32,7 @@ cli
     default: '0',
   })
 
-const {
+let {
   options: { id, type, number, title, size, width, column, theme, show_percent },
 } = cli.parse()
 
@@ -69,6 +69,9 @@ const { data } = await axios.post(
   }
 )
 const songs = data[parseInt(type) === 1 ? 'weekData' : 'allData'].slice(0, parseInt(number))
+
+if (!songs.length) title = 'Not Played Recently'
+
 const getAllImages = (recentlyPlayedSongs) =>
   Promise.all(recentlyPlayedSongs.map(({ song }) => imageToBase64(song.al.picUrl)))
 
