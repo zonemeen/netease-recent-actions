@@ -15,6 +15,10 @@
 
 需使用Github Actions，参考这个[仓库](https://github.com/zonemeen/zonemeen)的这个[文件](https://github.com/zonemeen/zonemeen/blob/a8c4549f38fd0ba254e3650eb0832a9e3cd1eb58/.github/workflows/job-work.yml)的配置，触发更新会自动提交`163.svg`这个文件至您的目标仓库
 
+示例：
+
+![163-示例](./163.svg)
+
 ### 默认配置
 
 ![163-default](https://user-images.githubusercontent.com/44596995/200461439-01e74061-74a8-47af-8b43-87f83e247010.svg)
