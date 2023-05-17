@@ -1,10 +1,14 @@
-import { cac } from 'cac'
 import { readFileSync, createWriteStream } from 'fs'
+import { fileURLToPath } from 'url'
+import path from 'path'
 import crypto from 'crypto'
 import ejs from 'ejs'
 import axios from 'axios'
+import { cac } from 'cac'
 
-const readTemplateFile = () => readFileSync('./template/svg.ejs', 'utf-8')
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+const readTemplateFile = () => readFileSync(path.resolve(__dirname, './template/svg.ejs'), 'utf-8')
 
 const aesEncrypt = (secKey, text) => {
   const cipher = crypto.createCipheriv('AES-128-CBC', secKey, '0102030405060708')
@@ -44,7 +48,9 @@ const imageToBase64 = (url) =>
       return `data:image/jpg;base64,` + buffer64
     })
 
-const { data } = await axios.post(
+const {
+  data: { weekData, allData },
+} = await axios.post(
   'https://music.163.com/weapi/v1/play/record?csrf_token=',
   aesRsaEncrypt(
     JSON.stringify({
@@ -68,7 +74,7 @@ const { data } = await axios.post(
     },
   }
 )
-const songs = data[parseInt(type) === 1 ? 'weekData' : 'allData'].slice(0, parseInt(number))
+const songs = (weekData ?? allData).slice(0, parseInt(number))
 
 if (!songs.length) title = 'Not Played Recently'
 
