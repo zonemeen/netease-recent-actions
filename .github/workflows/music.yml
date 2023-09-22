@@ -16,5 +16,5 @@ jobs:
     steps:
       - uses: zonemeen/netease-recent-actions@v1.0.33
         with:
-          id: '126764012' # Your NetEase Cloud Music account id
+          id: '1395100973' # Your NetEase Cloud Music account id
           size: 60
