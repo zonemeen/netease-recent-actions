@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.33
+      - uses: zonemeen/netease-recent-actions@v1.0.34
         with:
           id: '126764012' # Your NetEase Cloud Music account id
           size: 60
