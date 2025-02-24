@@ -2,19 +2,18 @@ name: Netease Recent Actions
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   schedule:
     - cron: '00 22 * * 0'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-      - uses: zonemeen/netease-recent-actions@v1.0.34
+      - uses: zonemeen/netease-recent-actions@v1.1.0
         with:
           id: '126764012' # Your NetEase Cloud Music account id
           size: 60
